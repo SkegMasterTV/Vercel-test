@@ -27,7 +27,7 @@ app.post('/detection', (req, res, next) => {
 
 app.use('/grade', (req, res, next) => {
     grade.find()
-    .then(grades => res.status(200).json(grades))
+    .then(grades => res.status(200).json({ message: 'Tag détecté'}))
     .catch(error => res.status(400).json({ error }));
 });
   
