@@ -19,12 +19,18 @@ app.post('/detection', (req, res, next) => {
     const detection = new Detection({
       ...req.body
     });
-    detection.save()
+    Detection.save()
       .then(() => res.status(201).json({ message: 'Tag détecté'}))// ajouter une réponse avec l'OF en question
       .catch(error => res.status(400).json({ error }));
       //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
   });
 
+app.use('/detection', (req, res, next) => {
+    Detection.find()
+    .then(detections => res.status(200).json(detections))
+    .catch(error => res.status(400).json({ error }));
+});
+  
 // Create GET request
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
