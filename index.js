@@ -25,7 +25,7 @@ app.post('/detection', (req, res, next) => {
       //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
   });
 
-app.use('/api/grade', (req, res, next) => {
+app.use('/grade', (req, res, next) => {
     grade.find()
     .then(grades => res.status(200).json(grades))
     .catch(error => res.status(400).json({ error }));
