@@ -9,14 +9,26 @@ const uri2 = "mongodb+srv://vercel:4QgX1J34vLaU3xik@go-fullstack.9nnj4kf.mongodb
 // Initialize Express
 const app = express();
 
+function connectDb (){
 
+}
+
+app.use((req, res, next) => {
+  
 mongoose.connect(uri,
-    { useNewUrlParser: true,
-      useUnifiedTopology: true })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => {
+    next();
+    console.log('Connexion à MongoDB réussie !')
+})
+  .catch(() => {
+    console.log('Connexion à MongoDB échouée !')
+})
+  } 
+  );  
 
-app.post('/detection', (req, res, next) => {
+app.post('/detection', (req, res) => {
     delete req.body._id;
     const detection = new Detection({
       ...req.body
@@ -27,7 +39,7 @@ app.post('/detection', (req, res, next) => {
       //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
   });
 
-app.get('/grade', (req, res, next) => {
+app.get('/grade', (req, res) => {
     Grade.find()
     .then(grades => res.status(200).json(grades))
     .catch(error => res.status(400).json({ error }));
