@@ -14,6 +14,17 @@ mongoose.connect(uri,
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+app.post('/api/detection', (req, res, next) => {
+    delete req.body._id;
+    const detection = new Detection({
+      ...req.body
+    });
+    detection.save()
+      .then(() => res.status(201).json({ message: 'Tag détecté'}))// ajouter une réponse avec l'OF en question
+      .catch(error => res.status(400).json({ error }));
+      //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
+  });
+
 // Create GET request
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
