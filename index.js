@@ -9,7 +9,6 @@ const uri2 = "mongodb+srv://vercel:4QgX1J34vLaU3xik@go-fullstack.9nnj4kf.mongodb
 // Initialize Express
 const app = express();
 
-get 
 
 mongoose.connect(uri,
     { useNewUrlParser: true,
