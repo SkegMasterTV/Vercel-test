@@ -11,8 +11,8 @@ const app = express();
 mongoose.connect(uri,
     { useNewUrlParser: true,
       useUnifiedTopology: true })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(() => console.log('Connexion à MongoDB échouée !'));
+    .then(() => res.log('Connexion à MongoDB réussie !'))
+    .catch(() => res.log('Connexion à MongoDB échouée !'));
 
 // Create GET request
 app.get("/", (req, res) => {
