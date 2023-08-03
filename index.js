@@ -14,7 +14,7 @@ mongoose.connect(uri,
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-app.post('/api/detection', (req, res, next) => {
+app.post('/detection', (req, res, next) => {
     delete req.body._id;
     const detection = new Detection({
       ...req.body
