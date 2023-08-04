@@ -36,7 +36,7 @@ app.post('/detection', (req, res) => {
   });
 
 app.get('/grade', (req, res) => {
-    Grade.find()
+    Grade.find({}, {limit: 20})
     .then(grades => res.status(200).json(grades))
     .catch(error => res.status(400).json({ error }));
 });
