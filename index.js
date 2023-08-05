@@ -8,7 +8,7 @@ const uri2 = "mongodb+srv://vercel:4QgX1J34vLaU3xik@go-fullstack.9nnj4kf.mongodb
 
 // Initialize Express
 const app = express();
-
+app.use(express.json());
 app.use((req, res, next) => {
   
 mongoose.connect(uri,
