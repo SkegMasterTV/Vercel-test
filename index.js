@@ -30,7 +30,7 @@ app.post('/detection', (req, res) => {
     const detection = new Detection({
       ...req.body
     });
-    Detection.save()
+    detection.save()
       .then(() => res.status(201).json({ message: 'Tag détecté'}))// ajouter une réponse avec l'OF en question
       .catch(error => res.status(400).json({ error }));
       //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
