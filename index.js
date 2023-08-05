@@ -25,8 +25,7 @@ mongoose.connect(uri,
   );  
 
 app.post('/detection', (req, res) => {
-    delete req.body._id;
-    const detection = new Detection({
+        const detection = new Detection({
       ...req.body
     });
     detection.save()
