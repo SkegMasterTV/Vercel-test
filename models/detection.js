@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const detectionSchema = mongoose.Schema({
-  nfcreaderid: { type: String, required: true },
-  description: { type: Array, required: true },// voir mongoose schema
+  nfcReaderId: { type: Number, required: true },
+  nfcTagId: { type: Number, required: true }
   //imageUrl: { type: String, required: true },
- // userId: { type: String, required: true },
+  //userId: { type: String, required: true },
   //price: { type: Number, required: true },
 },{ timestamps: true });
 

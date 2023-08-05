@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const Detection = require('./models/detection');
 const Grade = require('./models/grade');
+const detection = require("./models/detection");
 const uri = "mongodb+srv://Skeg:rZIxBT2aGJ5lOQiM@go-fullstack.9nnj4kf.mongodb.net/sample_training?retryWrites=true&w=majority";
 const uri2 = "mongodb+srv://vercel:4QgX1J34vLaU3xik@go-fullstack.9nnj4kf.mongodb.net/?retryWrites=true&w=majority";
 
@@ -35,9 +36,9 @@ app.post('/detection', (req, res) => {
       //Si l'arduino ne peut pas ajouter le RTC, ajouter timestamp ici
   });
 
-app.get('/grade', (req, res) => {
-    Grade.find().limit(20)
-    .then(grades => res.status(200).json(grades))
+app.get('/detection', (req, res) => {
+    Detection.find().limit(20)
+    .then(detections => res.status(200).json(detections))
     .catch(error => res.status(400).json({ error }));
 });
   
