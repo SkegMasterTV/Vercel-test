@@ -34,7 +34,7 @@ mongoose.connect(uri,
       res.status(201).json(
         async (req, res) => {
           try{
-            await Detection.findOne()} catch(error) {
+            await Detection.find();res.status(201).json(detections);} catch(error) {
               console.log(error); res.status(400).json({ error })}
         });} catch(error) 
     {console.log(error); res.status(400).json({ error })
