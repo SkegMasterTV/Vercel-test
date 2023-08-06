@@ -30,9 +30,7 @@ mongoose.connect(uri,
         ...req.body});
       await detection.save();
             const detections = await Detection.find().limit(2); 
-            res.status(200).json({detections});
-  
-          res.status(201).json({ message: 'Objet modifié !'});
+            res.status(200).json({detections})
         } catch(error) {
           console.log(error);
           res.status(400).json({ error });
