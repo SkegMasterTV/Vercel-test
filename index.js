@@ -36,7 +36,8 @@ mongoose.connect(uri,
           const detections = await Detection.find().limit(20); 
           res.status(200).json({detections})}
           catch(error) {res.status(400).json({ error })};
-        });} catch(error) {console.log(error); res.status(400).json({ error })
+        });
+      } catch(error) {console.log(error); res.status(400).json({ error })
       };
   });
 
