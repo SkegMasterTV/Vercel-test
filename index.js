@@ -24,16 +24,18 @@ mongoose.connect(uri,
   } 
   );  
 
-app.post('/detection', (req, res) => {
+ app.post('/detection', async (req, res) => {
+  try {
         const detection = new Detection({
       ...req.body
     });
     console.log(detection);
     console.log(req.body)
-    detection.save()
-      .then(() => res.status(201).json({ message: 'Tag détecté'}))// ajouter une réponse avec l'OF en question
-      .catch(error => res.status(400).json({ error }));
-  });
+    await detection.save();
+      res.status(201).json({ message: 'Tag détecté'});
+    } catch(error) {console.log(error); res.status(400).json({ error })
+  };
+});
 
 app.get('/detection', (req, res) => {
     Detection.find().limit(20)
