@@ -27,19 +27,14 @@ mongoose.connect(uri,
  app.post('/detection', async (req, res) => {
   try {
         const detection = new Detection({
-      ...req.body
-    });
+      ...req.body});
     console.log(detection);
     console.log(req.body)
     await detection.save();
-      res.status(201).json(async (req, res) => {try {
-        await Detection.findOne({ nfcTagId: req.body.nfcTagId },{nfcTagId});
-        res.status(201).json({detection});
-      } catch(error) {console.log(error); res.status(400).json({ error })
-    }});
-    } catch(error) {console.log(error); res.status(400).json({ error })
-  };
-});
+      res.status(201).json({ message: 'Tag détecté !'});} catch(error) 
+    {console.log(error); res.status(400).json({ error })
+      };
+  });
 
 app.get('/detection', (req, res) => {
     Detection.find().limit(20)
@@ -54,3 +49,6 @@ app.get("/", (req, res) => {
 
 // Export the Express API
 module.exports = app;
+
+
+
