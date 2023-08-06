@@ -34,10 +34,10 @@ mongoose.connect(uri,
       async (req, res) => {
         try {
           const detections = await Detection.find().limit(20); 
-          res.status(201).json();
           res.status(200).json({detections})}
           catch(error) {res.status(400).json({ error })} ;
         };
+        res.status(201).json({detections});
       } catch(error) {console.log(error); res.status(400).json({ error })
       };
   });
