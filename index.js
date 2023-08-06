@@ -32,7 +32,7 @@ mongoose.connect(uri,
     console.log(req.body)
     await detection.save();
       res.status(201).json(
-       detections async (req, res) => {
+        async (req, res) => {
           try{
             await Detection.find();res.status(201).json(detections);} catch(error) {
               console.log(error); res.status(400).json({ error })}
@@ -41,11 +41,12 @@ mongoose.connect(uri,
       };
   });
 
-app.get('/detection', (req, res) => {
-    Detection.find().limit(20)
-    .then(detections => res.status(200).json(detections))
-    .catch(error => res.status(400).json({ error }));
-});
+app.get('/detection', async (req, res) => {
+  try {
+    const detections = Detection.find().limit(20); 
+    res.status(200).json(detections)}
+    catch(error) {res.status(400).json({ error })};});
+
   
 // Create GET request
 app.get("/", (req, res) => {
