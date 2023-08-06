@@ -34,7 +34,7 @@ mongoose.connect(uri,
     await detection.save();
       res.status(201).json(async (req, res) => {try {
         await Detection.findOne({ nfcTagId: req.body.nfcTagId },{nfcTagId});
-        res.status(201).json();
+        res.status(201).json({nfcTagId});
       } catch(error) {console.log(error); res.status(400).json({ error })
     }});
     } catch(error) {console.log(error); res.status(400).json({ error })
