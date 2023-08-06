@@ -24,20 +24,20 @@ mongoose.connect(uri,
   } 
   );  
 
- app.post('/detection', async (req, res) => {
-  try {
-        const detection = new Detection({
-      ...req.body});
-    await detection.save();
-      async (req, res) => {
-        try {
-          const detections = await Detection.find().limit(2); 
-          res.status(200,201).json({detections})}
-          catch(error) {res.status(400).json({ error })} ;
-        };
-      } catch(error) {console.log(error); res.status(400).json({ error })
-      };
-  });
+  app.post('/detection', async (req, res) => {
+    try {
+          const detection = new Detection({
+        ...req.body});
+      await detection.save();
+            const detections = await Detection.find().limit(2); 
+            res.status(200).json({detections});
+  
+          res.status(201).json({ message: 'Objet modifié !'});
+        } catch(error) {
+          console.log(error);
+          res.status(400).json({ error });
+        }
+    });
 
 app.get('/detection', async (req, res) => {
   try {
