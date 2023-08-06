@@ -53,5 +53,4 @@ app.get("/", (req, res) => {
 // Export the Express API
 module.exports = app;
 
-async (req, res) => {try{await Detection.findOne()} catch {}}
 
