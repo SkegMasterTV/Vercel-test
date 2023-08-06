@@ -43,7 +43,7 @@ mongoose.connect(uri,
 
 app.get('/detection', async (req, res) => {
   try {
-    const detections = Detection.find().limit(20); 
+    const detections = await Detection.find().limit(20); 
     res.status(200).json({detections})}
     catch(error) {res.status(400).json({ error })};
   });
