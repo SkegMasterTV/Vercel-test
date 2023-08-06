@@ -31,7 +31,12 @@ mongoose.connect(uri,
     console.log(detection);
     console.log(req.body)
     await detection.save();
-      res.status(201).json({ message: 'Tag détecté !'});} catch(error) 
+      res.status(201).json(
+        async (req, res) => {
+          try{
+            await Detection.findOne()} catch(error) {
+              console.log(error); res.status(400).json({ error })}
+        });} catch(error) 
     {console.log(error); res.status(400).json({ error })
       };
   });
@@ -50,5 +55,5 @@ app.get("/", (req, res) => {
 // Export the Express API
 module.exports = app;
 
-
+async (req, res) => {try{await Detection.findOne()} catch {}}
 
