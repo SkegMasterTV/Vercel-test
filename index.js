@@ -32,7 +32,11 @@ mongoose.connect(uri,
     console.log(detection);
     console.log(req.body)
     await detection.save();
-      res.status(201).json(await Detection.findOne({ nfcTagId: req.body.nfcTagId },{nfcTagId}));
+      res.status(201).json(async (req, res) => {try {
+        await Detection.findOne({ nfcTagId: req.body.nfcTagId },{nfcTagId});
+        res.status(201).json();
+      } catch(error) {console.log(error); res.status(400).json({ error })
+    }});
     } catch(error) {console.log(error); res.status(400).json({ error })
   };
 });
