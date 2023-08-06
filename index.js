@@ -32,7 +32,7 @@ mongoose.connect(uri,
     console.log(detection);
     console.log(req.body)
     await detection.save();
-      res.status(201).json({ message: 'Tag détecté'});
+      res.status(201).json({ message: 'Tag détecté', message: 'req.body'});
     } catch(error) {console.log(error); res.status(400).json({ error })
   };
 });
