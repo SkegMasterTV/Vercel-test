@@ -44,6 +44,14 @@ app.get('/detection', async (req, res) => {
     catch(error) {res.status(400).json({ error })};
   });
 
+  app.get('/detection/:nfcTagId', async (req, res) => {
+    try {
+      const detection = await Detection.findOne({nfcTagId: req.params.nfcTagId}); 
+      res.status(200).json({detection})}
+      catch(error) {res.status(400).json({ error })};
+    });  
+
+
   
 // Create GET request
 app.get("/", (req, res) => {
