@@ -24,13 +24,26 @@ mongoose.connect(uri,
   } 
   );  
 
-  app.post('/detection', async (req, res) => {
+  /*app.post('/detection', async (req, res) => {
     try {
           const detection = new Detection({
         ...req.body});
       await detection.save();
             const detections = await Detection.find().limit(2); 
             res.status(200).json({detections})
+        } catch(error) {
+          console.log(error);
+          res.status(400).json({ error });
+        }
+    });*/
+
+app.post('/detection', async (req, res) => {
+    try {
+          const detection = new Detection({
+        ...req.body});
+      await detection.save();
+            const OF = await link.findOne({"nfcTagId": detection.nfcTagId}); 
+            res.status(200).json({OF})
         } catch(error) {
           console.log(error);
           res.status(400).json({ error });
