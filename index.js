@@ -56,10 +56,10 @@ app.post('/link', async (req, res) => {
           const link = new Link({
         ...req.body});
       await link.save(); 
-            res.status(201).json({message: 'Attribution du tag réalisée'})
+            res.status(201).json({message: 'Attribution du tag réalisée'});
         } catch(error) {
           console.log(error);
-          res.status(400).json({ error });
+          res.status(400).json({ error })
         }
     });    
 
