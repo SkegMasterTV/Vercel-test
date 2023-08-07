@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const Detection = require('./models/detection');
+const Link = require('./models/link');
 const Grade = require('./models/grade');
 const uri = "mongodb+srv://Skeg:rZIxBT2aGJ5lOQiM@go-fullstack.9nnj4kf.mongodb.net/?retryWrites=true&w=majority";
 const uri2 = "mongodb+srv://vercel:4QgX1J34vLaU3xik@go-fullstack.9nnj4kf.mongodb.net/?retryWrites=true&w=majority";
