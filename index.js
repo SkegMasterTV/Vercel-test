@@ -56,7 +56,7 @@ app.post('/link', async (req, res) => {
           const link = new Link({
         ...req.body});
         console.log(link);
-        console.log(req.body)
+        console.log(req.body);
       await link.save(); 
             res.status(201).json({message: 'Attribution du tag réalisée'});
         } catch(error) {
@@ -70,7 +70,7 @@ app.post('/detection', async (req, res) => {
             const detection = new Detection({
           ...req.body});
         console.log(detection);
-        console.log(req.body)
+        console.log(req.body);
         await detection.save();
           res.status(201).json({ message: 'Tag détecté'});
         } catch(error) {
