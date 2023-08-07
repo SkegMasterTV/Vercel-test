@@ -6,4 +6,4 @@ const linkSchema = mongoose.Schema({
 },{ timestamps: true }
 );
 
-module.exports = mongoose.model('link', linkSchema);
+module.exports = mongoose.model('Link', linkSchema);
