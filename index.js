@@ -43,7 +43,7 @@ app.post('/detection', async (req, res) => {
           const detection = new Detection({
         ...req.body});
       await detection.save();
-            const OF = await link.findOne({"nfcTagId": req.params.nfcTagId}); 
+            const OF = await Link.findOne({"nfcTagId": req.params.nfcTagId}); 
             res.status(200).json({OF})
         } catch(error) {
           console.log(error);
