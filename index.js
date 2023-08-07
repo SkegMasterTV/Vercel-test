@@ -50,6 +50,18 @@ app.post('/detection', async (req, res) => {
         }
     });
 
+app.post('/link', async (req, res) => {
+    try {
+          const link = new Link({
+        ...req.body});
+      await link.save(); 
+            res.status(200).json({message: "Attribution du tag réalisée"})
+        } catch(error) {
+          console.log(error);
+          res.status(400).json({ error });
+        }
+    });    
+
 app.get('/detection', async (req, res) => {
   try {
     const detections = await Detection.find().limit(20); 
