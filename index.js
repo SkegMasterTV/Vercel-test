@@ -24,7 +24,7 @@ mongoose.connect(uri,
 })
   } 
   );  
-
+//post route qui fonctionne
   /*app.post('/detection', async (req, res) => {
     try {
           const detection = new Detection({
@@ -38,7 +38,7 @@ mongoose.connect(uri,
         }
     });*/
 
-app.post('/detection', async (req, res) => {
+/*app.post('/detection', async (req, res) => {
     try {
           const detection = new Detection({
         ...req.body});
@@ -49,7 +49,7 @@ app.post('/detection', async (req, res) => {
           console.log(error);
           res.status(400).json({ error });
         }
-    });
+    });*/
 
 app.post('/link', async (req, res) => {
     try {
@@ -77,6 +77,18 @@ app.get('/detection', async (req, res) => {
       catch(error) {res.status(400).json({ error })};
     });  
 
+    app.post('/detection', async (req, res) => {
+      try {
+            const detection = new Detection({
+          ...req.body
+        });
+        console.log(detection);
+        console.log(req.body)
+        await detection.save();
+          res.status(201).json({ message: 'Tag détecté'});
+        } catch(error) {console.log(error); res.status(400).json({ error })
+      };
+    });    
 
   
 // Create GET request
