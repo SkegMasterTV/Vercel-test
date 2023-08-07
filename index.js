@@ -56,13 +56,26 @@ app.post('/link', async (req, res) => {
           const link = new Link({
         ...req.body});
       await link.save(); 
-            res.status(201).json({message: "Attribution du tag réalisée"})
+            res.status(201).json({message: 'Attribution du tag réalisée'})
         } catch(error) {
           console.log(error);
           res.status(400).json({ error });
         }
     });    
 
+app.post('/detection', async (req, res) => {
+      try {
+            const detection = new Detection({
+          ...req.body});
+        await detection.save();
+          res.status(201).json({ message: 'Tag détecté'});
+        } catch(error) {
+          console.log(error);
+          res.status(400).json({ error })
+      }
+    });       
+    
+    
 app.get('/detection', async (req, res) => {
   try {
     const detections = await Detection.find().limit(20); 
@@ -77,18 +90,7 @@ app.get('/detection', async (req, res) => {
       catch(error) {res.status(400).json({ error })};
     });  
 
-    app.post('/detection', async (req, res) => {
-      try {
-            const detection = new Detection({
-          ...req.body
-        });
-        console.log(detection);
-        console.log(req.body)
-        await detection.save();
-          res.status(201).json({ message: 'Tag détecté'});
-        } catch(error) {console.log(error); res.status(400).json({ error })
-      };
-    });    
+ 
 
   
 // Create GET request
