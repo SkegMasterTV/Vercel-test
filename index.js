@@ -92,7 +92,7 @@ app.get('/detection/:nfcTagId', async (req, res) => {
 
 app.get('/link/:nfcTagId', async (req, res) => {
   try {
-    const link = await Link.findOne({"nfcTagId": req.params.nfcTagId}); 
+    const link = await Link.findOne({"nfcTagId": req.params.nfcTagId},{'fabOrder':1}); 
     res.status(200).json({link})}
     catch(error) {res.status(400).json({ error })};
   });  
